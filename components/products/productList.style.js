@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingTop: SIZES.xxLarge,
         paddingLeft: SIZES.small/2,
+    },
+    separator:{
+        height: 16,
     }
 })
 
