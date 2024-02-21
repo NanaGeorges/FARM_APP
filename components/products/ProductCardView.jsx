@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, Touchable } from 'react-native'
+import { View, Text, TouchableOpacity, Image} from 'react-native'
 import React from 'react'
 import styles from './productCardView.style'
 import {Ionicons} from "@expo/vector-icons"; 
