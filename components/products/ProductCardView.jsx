@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-const ProductCardView = () => {
+const ProductCardView = ({item}) => {
     const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={()=> navigation.navigate("ProductDetails")} >
@@ -19,12 +19,12 @@ const ProductCardView = () => {
             </View>
             <View style={styles.details}>
                 <Text style={styles.title} numberOfLines={1}>
-                    Product
+                    {item.title}
                 </Text>
                 <Text style={styles.supplier} numberOfLines={1}>
-                    kito Solution
+                    {item.supplier}
                 </Text>
-                <Text style={styles.price}>$2353</Text>
+                <Text style={styles.price}>{item.price}</Text>
             </View>
             <TouchableOpacity style={styles.addBtn}>
                     <Ionicons  name="add-circle" size={35} color={COLORS.primary} />
