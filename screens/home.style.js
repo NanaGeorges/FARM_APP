@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
 
     appBarWrapper: {
         marginHorizontal:22,
-        marginTop: SIZES.Small
+        marginTop: SIZES.small
     },
     appBar: {
         flexDirection: "row",

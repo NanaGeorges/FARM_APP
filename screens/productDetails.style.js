@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     ratingText:{
         color: COLORS.gray,
-        fontFamily:"mediun",
+        fontFamily:"medium",
         paddingHorizontal: 5,
     },
     descriptionWrapper:{
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     cartTitle:{
         marginLeft: SIZES.small,
         fontFamily: "semibold",
-        fontSize: SIZES.mediun,
+        fontSize: SIZES.medium,
         color: COLORS.lightWhite,
     },
     title:{

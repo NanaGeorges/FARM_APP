@@ -10,10 +10,11 @@ import { useNavigation } from '@react-navigation/native';
 const ProductCardView = ({item}) => {
     const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={()=> navigation.navigate("ProductDetails")} >
+    <TouchableOpacity onPress={()=> navigation.navigate("ProductDetails", {item} )} >
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                    <Image source={{uri: "https://d326fntlu7tb1e.cloudfront.net/uploads/5d445b91-c01a-4564-8ff8-c27c2b88ea5b-fn7.png"}} 
+                    <Image source={{
+                    uri: item.imageUrl }} 
                     style={styles.image}
                     /> 
             </View>
@@ -24,7 +25,7 @@ const ProductCardView = ({item}) => {
                 <Text style={styles.supplier} numberOfLines={1}>
                     {item.supplier}
                 </Text>
-                <Text style={styles.price}>{item.price}</Text>
+                <Text style={styles.price}>$ {item.price}</Text>
             </View>
             <TouchableOpacity style={styles.addBtn}>
                     <Ionicons  name="add-circle" size={35} color={COLORS.primary} />
