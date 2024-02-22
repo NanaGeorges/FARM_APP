@@ -5,12 +5,13 @@ import styles from './search.style'
 import {COLORS, SIZES } from "../constants";
 import {Feather, Ionicons} from '@expo/vector-icons';
 import axios from 'axios';
+import SearchTile from '../components/products/SearchTile';
 //import { FlatList } from 'react-native-gesture-handler';
 
 const Search = () => {
     const [searchKey, setSearchKey] = useState("");
     const [searchResults, setSearchResuts] = useState([]);
-    console.log(searchResults);
+    //console.log(searchResults);
 
     //http://localhost:3000/api/products/search/${searchKey}
     const handleSearch = async() =>{
@@ -56,7 +57,8 @@ const Search = () => {
             <FlatList
                 data={searchResults}
                 keyExtractor= {item => item._id}
-                renderItem ={({item}) => (<Text> {item.title} </Text>)}
+                renderItem ={({item}) => (<SearchTile item={item}/>)}
+                style={{marginHorizontal:12}}
             />
         )}
     </SafeAreaView>
