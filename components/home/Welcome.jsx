@@ -15,11 +15,11 @@ const Welcome = () => {
         <View style= {styles.container}>
             <Text style= {styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>
                 {" "}
-                Find the most
+                Faachi
             </Text>
         <Text style= { styles.welcomeTxt(COLORS.primary, 0)}>
                 {" "}
-                Luxurious Furniture
+                Connected to the world of farming!
             </Text>
         </View>
         <View style= {styles.searchContainer}>

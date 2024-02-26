@@ -3,9 +3,10 @@ import React, {useState, useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {Ionicons, Fontisto} from  '@expo/vector-icons';  // Import a component to display an icon.
 import styles from './home.style';
-import { Welcome, Headings, ProductRow } from '../components';
+import { Welcome, Headings, ProductRow, Categories } from '../components';
 import Carousel from '../components/home/Carousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 //import Headings from '../components/home/Headings';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -65,6 +66,7 @@ const Home = () => {
         <Carousel/>
         <Headings/>
         <ProductRow/>
+        <Categories/>
       </ScrollView>
     </SafeAreaView>
   )
