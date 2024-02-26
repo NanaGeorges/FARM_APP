@@ -8,6 +8,8 @@ import {MaterialCommunityIcons, Ionicons} from  '@expo/vector-icons';
 //import BackBtn from '../components/BackBtn';
 import { Button, BackBtn } from '../components';
 import {COLORS, SIZES} from "../constants"
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import axios from 'axios'; 
 
 
 const validationSchema= Yup.object().shape({
@@ -20,12 +22,12 @@ const validationSchema= Yup.object().shape({
   location: Yup.string()
     .min(3, 'Provide a valid location')
     .required('Required'),
-  Username: Yup.string()
+  username: Yup.string()
     .min(3, 'Provide a valid Username')
     .required('Required'),
 });
 const SignUp = ({navigation}) => {
-    const [Loader, setLoader] = useState('false');
+    const [loader, setLoader] = useState(false);
     const [obsecureText, setObsecureText] = useState(false)
   
     const inValidForm = () => {
@@ -44,13 +46,29 @@ const SignUp = ({navigation}) => {
       )
     }
 
+    const registerUser = async(values)=>{
+      setLoader(true);
+      try {
+        const endpoint = 'http://192.168.1.3:3000/api/register/'; //add your api here
+        const data =values;
+    
+        const response = await axios.post(endpoint, data);
+    
+        if(response.status === 201){
+          navigation.replace('Login')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
   return (
-    <ScrollView>
+    <KeyboardAwareScrollView extraHeight={200}>
     <SafeAreaView style={{marginHorizontal: 20}}>
       <View>
         <BackBtn onPress={()=>navigation.goBack()} />
         <Image 
-          source={require("../assets/images/bk.png")}
+          source={require("../assets/images/bk2.png")}
           style={{
             height: SIZES.height/3,
             width: SIZES.width - 60 ,
@@ -59,12 +77,12 @@ const SignUp = ({navigation}) => {
         }}
          />
 
-        <Text style={styles.title}>Unlimited Luxurious Furniture</Text>
+        <Text style={styles.title}>      Connect to Farming world</Text>
         
         <Formik
           initialValues={{email:'',password:'', location:'', username:''}}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => registerUser(values)}
         >
           {({ handleChange, handleBlur,touched, handleSubmit, values, errors, isValid, setFieldTouched}) => (
             <View>
@@ -81,10 +99,10 @@ const SignUp = ({navigation}) => {
 
                     <TextInput
                       placeholder='Username'
-                      onFocus={()=> {setFieldTouched('Username')}} // to show error if user not fill the field
-                      onBlur={() => {setFieldTouched('Username','')}}// to hide error when user start typing in
+                      onFocus={()=> {setFieldTouched('username')}} // to show error if user not fill the field
+                      onBlur={() => {setFieldTouched('username','')}}// to hide error when user start typing in
                       value={values.username}
-                      onChangeText={handleChange('Username')}
+                      onChangeText={handleChange('username')}
                       autoCapitalize='none'
                       autoCorrect={false}
                       style={{flex: 1}}
@@ -184,9 +202,13 @@ const SignUp = ({navigation}) => {
 
               
             
-              < Button title={"S I G N U P"} onPress={isValid? handleSubmit: inValidForm} isValid={isValid}/>
+              < Button 
+                title={"S I G N U P"} 
+                loader={loader}
+                onPress={isValid? handleSubmit: inValidForm} 
+                isValid={isValid}/>
           
-              <Text style={styles.registration} onPress={()=>{navigation.navigate('')}}> Register </Text>
+              
           
             </View>
           )}
@@ -194,7 +216,7 @@ const SignUp = ({navigation}) => {
         </Formik>
       </View>
     </SafeAreaView>
-  </ScrollView>
+  </KeyboardAwareScrollView>
   )
 }
 

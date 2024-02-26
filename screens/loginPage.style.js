@@ -4,15 +4,24 @@ import {COLORS, SIZES} from  '../constants'
 const styles = StyleSheet.create({
     cover:{
         height: SIZES.height/2.4,
-        width: SIZES.width - 60 ,
+        width: SIZES.width -20 ,
         resizeMode: "contain",
-        marginBottom: SIZES.xxLarge
+        marginBottom: SIZES.xLarge
+    },
+    appTitle:{
+        fontFamily: "bold",
+        color: COLORS.primary,
+        fontSize: SIZES.large,
+        alignItems: 'center',
+        marginHorizontal: '35%',
+        marginBottom: SIZES.small
     },
     title:{
         fontFamily: "bold",
         color: COLORS.primary,
-        fontSize: SIZES.xLarge,
+        fontSize: SIZES.large,
         alignItems: 'center',
+        marginHorizontal: 20,
         marginBottom: SIZES.xxLarge
     },
     wrapper:{

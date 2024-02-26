@@ -8,6 +8,9 @@ import {MaterialCommunityIcons} from  '@expo/vector-icons';
 //import BackBtn from '../components/BackBtn';
 import { Button, BackBtn } from '../components';
 import {COLORS} from "../constants"
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 const validationSchema= Yup.object().shape({
@@ -18,7 +21,7 @@ const validationSchema= Yup.object().shape({
 });
 
 const LoginPage = ({navigation}) => {
-  const [Loader, setLoader] = useState('false');
+  const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] =useState(null);
   const [obsecureText, setObsecureText] = useState(false)
 
@@ -38,22 +41,86 @@ const LoginPage = ({navigation}) => {
     )
   }
 
+  const login = async (values)=>{
+    setLoader(true)
+    
+    try{
+      const endpoint = 'http://192.168.1.3:3000/api/login'
+      const data = values;
+      const response = await axios.post(endpoint,data);
+      
+      if(response.status === 200){
+        setLoader(false);
+        //console.log(responseData);
+        setResponseData(response.data);
+       // console.log(`user${responseData._id}`);
+        await AsyncStorage.setItem(
+          `user${responseData._id}`, 
+          JSON.stringify(responseData)
+          );
+        await AsyncStorage.setItem('id', JSON.stringify(responseData))
+        if (responseData && responseData._id) {
+          // Access _id property and perform actions
+          navigation.replace('Bottom Navigation')
+        } else {
+          console.log("Response data is null or missing _id property");
+        }
+        const newUser = await AsyncStorage.getItem(`user${responseData._id}`); 
+        console.log(newUser)  
+        const id= await AsyncStorage.getItem('id')
+        console.log('here is id:', id)
+
+      }else{
+        Alert.alert(
+          "Error Loggin in",
+          "Please provide valid credentials",
+          [
+            {
+              text: "Cancel", onPress: ()=> {}
+            },
+            {
+              text: "Continue", onPress: ()=> {}
+            },
+            {defaultIndex: 1}
+          ]
+        );
+      }
+    }catch(error){
+      console.log(error)
+      Alert.alert(
+        "Error",
+        "Oops, Error logging in try again ",
+        [
+          {
+            text: "Cancel", onPress: ()=> {}
+          },
+          {
+            text: "Continue", onPress: ()=> {}
+          },
+          {defaultIndex: 1}
+        ]
+      );
+    }finally{
+      setLoader(false);
+    }
+  }
+
   return (
-    <ScrollView>
+    <KeyboardAwareScrollView extraHeight={200}>
       <SafeAreaView style={{marginHorizontal: 20}}>
         <View>
           <BackBtn onPress={()=>navigation.goBack()} />
           <Image 
-            source={require("../assets/images/bk.png")}
+            source={require("../assets/images/bk1.png")}
             style={styles.cover}
            />
-
-          <Text style={styles.title}>Unlimited Luxurious Furniture</Text>
+          <Text style={styles.appTitle}>Faachi App</Text>
+          <Text style={styles.title}>Empower your farming business</Text>
           
           <Formik
             initialValues={{email:'',password:'' }}
             validationSchema={validationSchema}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => login(values)}
           >
             {({ handleChange, handleBlur,touched, handleSubmit, values, errors, isValid, setFieldTouched}) => (
               <View>
@@ -116,7 +183,12 @@ const LoginPage = ({navigation}) => {
                   )}
                 </View>
               
-                < Button title={"L O G I N"} onPress={isValid? handleSubmit: inValidForm} isValid={isValid}/>
+                < Button 
+                loader={loader}
+                title={"L O G I N"} 
+                onPress={isValid? handleSubmit: inValidForm} 
+                isValid={isValid}
+                />
             
                 <Text style={styles.registration} onPress={()=>{navigation.navigate('SignUp')}}> Register </Text>
             
@@ -126,7 +198,7 @@ const LoginPage = ({navigation}) => {
           </Formik>
         </View>
       </SafeAreaView>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   )
 }
 

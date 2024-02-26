@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Home from '../screens/Home';
 // import Search from  '../screens/Search';
 // import Profile from  '../screens/Profile';
-import { Home, Search, Profile} from '../screens';
+import { Home, Search, Profile, Sell, Chat} from '../screens';
 import {  Ionicons } from '@expo/vector-icons';
 import { COLORS } from "../constants/index"
 
@@ -40,6 +40,21 @@ const BottomTabNavigation = () => {
             }
         }}
         />
+
+        <Tab.Screen 
+        name="Chat" 
+        component={Chat}
+        options={{
+            
+            tabBarIcon: ({focused}) => {
+                return <Ionicons name={'chatbubbles'} 
+                size={24} 
+                color={focused ? COLORS.primary : COLORS.gray2} 
+                />
+            }
+        }}
+        />
+        
         
         <Tab.Screen 
         name="Search" 
@@ -55,7 +70,21 @@ const BottomTabNavigation = () => {
         }}
         />
 
-<Tab.Screen 
+        <Tab.Screen 
+        name="Sell" 
+        component={Sell}
+        options={{
+            
+            tabBarIcon: ({focused}) => {
+                return <Ionicons name={'ios-add-circle'} 
+                size={24} 
+                color={focused ? COLORS.primary : COLORS.gray2} 
+                />
+            }
+        }}
+        />
+
+        <Tab.Screen 
         name="Profile" 
         component={Profile}
         options={{

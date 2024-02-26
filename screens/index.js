@@ -8,6 +8,8 @@ import LoginPage from './LoginPage';
 import Orders  from "./Orders";
 import Favorites from  './Favorites';
 import SignUp from './SignUp';
+import Sell from './Sell';
+import Chat from './Chat';
 
 export{
     Home,
@@ -19,5 +21,7 @@ export{
     LoginPage,
     Orders,
     Favorites,
-    SignUp
+    SignUp,
+    Sell,
+    Chat
 }

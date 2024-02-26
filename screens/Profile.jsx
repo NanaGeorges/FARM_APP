@@ -4,12 +4,56 @@ import styles from './profile.style';
 import { StatusBar } from 'expo-status-bar';
 import {COLORS, SIZES} from  "../constants";
 import { AntDesign, MaterialCommunityIcons, SimpleLineIcons} from  '@expo/vector-icons'; 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const Profile = ({navigation}) => {
   const [userData, setUserData] = useState(null)
   const [userLogin, setUserLogin] = useState(false)
+
+  useEffect(()=>{
+    checkExistingUser();
+  },[]);
+
+  const checkExistingUser = async()=>{
+      const id= await AsyncStorage.getItem('id')
+     console.log("checking id: ", id)
+      //const userId = `user${JSON.parse(id)}`;
+      //console.log("checking user: ", userId);
+
+      const parsedId = JSON.parse(id);
+    const userId = `user${parsedId._id}`;
+    console.log("checking user: ", userId);
+      
+      try{
+        const currentUser = await AsyncStorage.getItem(userId);
+        console.log(currentUser)
+        if (currentUser !== null){
+          const parsedData = JSON.parse(currentUser)
+          setUserData(parsedData)
+          setUserLogin(true)
+          console.log(`Profile page has access to ${parsedData}`)
+        }else{
+          navigation.navigate("Login")
+        }
+      }catch(error){
+        console.log("Error retrieving the data", error)
+      }
+  }
+
+const userLogout = async()=>{
+    const id= await AsyncStorage.getItem('id')
+     const parsedId = JSON.parse(id);
+   const userId = `user${parsedId._id}`;
+    //console.log("checking user: ", userId);
+    try {
+      await  AsyncStorage.multiRemove([userId, 'id'])
+      navigation.replace('Bottom Navigation')
+    } catch (error) {
+      console.log("Error Loggin out the user:", error)
+    }
+  }
 
   const logout = () => {
     Alert.alert(
@@ -20,7 +64,7 @@ const Profile = ({navigation}) => {
           text: "Cancel", onPress: ()=> console.log("cancel pressed")
         },
         {
-          text: "Continue", onPress: ()=> console.log("Continue pressed")
+          text: "Continue", onPress: ()=> userLogout()
         },
         {defaultIndex: 1}
       ]
@@ -67,13 +111,13 @@ const Profile = ({navigation}) => {
 
         <View style={{width: '100%'}}>
           <Image
-            source={require('../assets/images/space.jpg')}
+            source={require('../assets/images/harv.jpg')}
             style={styles.cover}
           />
         </View>
         <View style={styles.profileContainer}>
           <Image
-            source={require('../assets/images/profile.jpeg')}
+            source={require('../assets/images/userDefault.png')}
             style={styles.profile}
           />
           <Text style={styles.name}>
@@ -88,7 +132,7 @@ const Profile = ({navigation}) => {
             </TouchableOpacity>
           ):(
             <View style={styles.loginBtn}>
-                <Text style={styles.menuText}>sdjhdksuiuuouo   </Text>
+                <Text style={styles.menuText}>manage your account </Text>
               </View>
           )}
 
