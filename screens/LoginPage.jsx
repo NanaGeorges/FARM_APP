@@ -45,8 +45,8 @@ const LoginPage = ({navigation}) => {
     setLoader(true)
     
     try{
-      //const endpoint = 'http://192.168.1.3:3000/api/login'
-      const endpoint = 'http://172.20.10.2:3000/api/login'
+      const endpoint = 'http://192.168.1.2:3000/api/login'
+      //const endpoint = 'http://172.20.10.2:3000/api/login'
       const data = values;
       const response = await axios.post(endpoint,data);
       

@@ -26,6 +26,7 @@ const validationSchema= Yup.object().shape({
     .min(3, 'Provide a valid Username')
     .required('Required'),
 });
+
 const SignUp = ({navigation}) => {
     const [loader, setLoader] = useState(false);
     const [obsecureText, setObsecureText] = useState(false)
