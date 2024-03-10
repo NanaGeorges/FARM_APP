@@ -5,12 +5,20 @@ const styles = StyleSheet.create({
     container: {
         width: "100%"
     },
-    welcomeTxt: (color, top) => ({
+    welcomeTitle: (color, top) => ({
         fontFamily: "bold", 
         fontSize: SIZES.xxLarge -6,
         marginTop: top,
         color: color,
-        marginHorizontal: 12
+        marginHorizontal: '30%'
+        
+    }),
+    welcomeTxt: (color, top) => ({
+        fontFamily: "bold", 
+        fontSize: SIZES.xLarge -6,
+        marginTop: top,
+        color: color,
+        marginHorizontal: '10%'
         
     }),
     searchContainer: {

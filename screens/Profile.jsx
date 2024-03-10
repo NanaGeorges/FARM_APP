@@ -121,7 +121,7 @@ const userLogout = async()=>{
             style={styles.profile}
           />
           <Text style={styles.name}>
-              {userLogin === true ? "Nana" : "Please Login into your account"}
+              {userLogin === true ? userData.username : "Please Login into your account"}
           </Text>
 
           {userLogin === false ? (

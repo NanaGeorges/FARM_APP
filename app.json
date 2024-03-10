@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "FURNITURE_APP",
-    "slug": "FURNITURE_APP",
+    "name": "FARM_APP",
+    "slug": "FARM_APP",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.png", 
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

@@ -64,10 +64,12 @@ const Home = () => {
       <ScrollView>
         <Welcome/>
         <Carousel/>
+        <Categories/>
         <Headings/>
         <ProductRow/>
-        <Categories/>
+        <Text style={{paddingVertical: 50}}>    </Text>
       </ScrollView>
+      
     </SafeAreaView>
   )
 }

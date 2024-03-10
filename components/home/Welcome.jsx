@@ -13,7 +13,7 @@ const Welcome = () => {
   return (
     <View>
         <View style= {styles.container}>
-            <Text style= {styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>
+            <Text style= {styles.welcomeTitle(COLORS.black, SIZES.xSmall)}>
                 {" "}
                 Faachi
             </Text>

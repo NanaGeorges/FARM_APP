@@ -25,7 +25,7 @@ const ProductCardView = ({item}) => {
                 <Text style={styles.supplier} numberOfLines={1}>
                     {item.supplier}
                 </Text>
-                <Text style={styles.price}>$ {item.price}</Text>
+                <Text style={styles.price}>Rs {item.price}</Text>
             </View>
             <TouchableOpacity style={styles.addBtn}>
                     <Ionicons  name="add-circle" size={35} color={COLORS.primary} />
