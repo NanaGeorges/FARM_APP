@@ -16,6 +16,13 @@ const styles = StyleSheet.create({
         marginEnd: 5,
         textAlign:'right'
     },
+    imageUploadLabel:{
+      fontFamily:"regular",
+      fontSize: SIZES.xSmall,
+      marginBottom: 5,
+      marginEnd: 5,
+      textAlign:'left'
+  },
     inputWrapper: (borderColor)=> ({
         borderColor: borderColor,
         backgroundColor: COLORS.lightWhite,
@@ -26,6 +33,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     }),
+    errorMessage:{
+      color: COLORS.red,
+      fontFamily: "regular",
+      marginTop:5,
+      marginLeft: 5,
+      fontSize: SIZES.xSmall,
+  },
     inputWrapperDescription: (borderColor)=> ({
         borderColor: borderColor,
         backgroundColor: COLORS.lightWhite,

@@ -14,5 +14,5 @@ export {
     ProductList,
     BackBtn,
     Button,
-    Categories
+    Categories,
 }

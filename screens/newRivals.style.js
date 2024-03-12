@@ -29,6 +29,24 @@ const styles = StyleSheet.create({
         marginLeft: 5
     },
 
+    // style specifique to ProductsListsByCategory Flatlist
+    loadingContainer:{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        alignContent: "center",
+    },
+    containerFlatlist:{
+        alignItems: "center",
+        paddingTop: SIZES.xxLarge,
+        paddingLeft: SIZES.small/2,
+    },
+    separator:{
+        height: 16,
+    }
+
+    // End of specique styles for ProducslistsByCategory Flatlis
+
 })
 
 export default styles;

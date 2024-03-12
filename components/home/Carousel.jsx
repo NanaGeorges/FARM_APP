@@ -11,8 +11,10 @@ const Carousel = () => {
         //"https://d326fntlu7tb1e.cloudfront.net/uploads/5d445b91-c01a-4564-8ff8-c27c2b88ea5b-fn7.png",
         "https://drive.google.com/uc?export=view&id=1rRA-_OAwuni6B7vpObBayJrfvWILaaVD",
         "https://drive.google.com/uc?export=view&id=1hAfJKRMlQY22pUfTYgHajHSOw7lVZpG8",
-        "https://drive.google.com/uc?export=view&id=1rRA-_OAwuni6B7vpObBayJrfvWILaaVD",
-        "https://drive.google.com/uc?export=view&id=1rIYjkbKWaX5FAp2mNnelSs-FEMrrec5U"
+        //"https://drive.google.com/uc?export=view&id=1rRA-_OAwuni6B7vpObBayJrfvWILaaVD",
+        "https://drive.google.com/uc?export=view&id=1rIYjkbKWaX5FAp2mNnelSs-FEMrrec5U",
+        "https://drive.google.com/uc?export=view&id=1FV6XPypCt7PFVTgXJsN5YXfGVDDGX9-E",
+        "https://drive.google.com/uc?export=view&id=1U2ecDE2b_dCyjmxugrpEL8e0uVhfSTKF",
     ]
     return (
     <View style={styles.carouselContainer}> 

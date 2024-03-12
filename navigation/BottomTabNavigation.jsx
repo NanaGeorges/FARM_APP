@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Home from '../screens/Home';
 // import Search from  '../screens/Search';
 // import Profile from  '../screens/Profile';
-import { Home, Search, Profile, Sell, Chat} from '../screens';
+import { Home, Search, Profile, Sell, Chats} from '../screens';
 import {  Ionicons } from '@expo/vector-icons';
 import { COLORS } from "../constants/index"
 
@@ -42,8 +42,8 @@ const BottomTabNavigation = () => {
         />
 
         <Tab.Screen 
-        name="Chat" 
-        component={Chat}
+        name="Chats" 
+        component={Chats}
         options={{
             
             tabBarIcon: ({focused}) => {

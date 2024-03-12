@@ -55,6 +55,7 @@ const LoginPage = ({navigation}) => {
         //console.log(responseData);
         setResponseData(response.data);
        // console.log(`user${responseData._id}`);
+         //_id=0;
         await AsyncStorage.setItem(
           `user${responseData._id}`, 
           JSON.stringify(responseData)

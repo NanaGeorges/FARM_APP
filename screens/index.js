@@ -10,6 +10,8 @@ import Favorites from  './Favorites';
 import SignUp from './SignUp';
 import Sell from './Sell';
 import Chat from './Chat';
+import ProductsListsByCategory from './ProductsListsByCategory'
+import Chats from './Chats';
 
 export{
     Home,
@@ -23,5 +25,7 @@ export{
     Favorites,
     SignUp,
     Sell,
-    Chat
+    Chats,
+    Chat,
+    ProductsListsByCategory
 }

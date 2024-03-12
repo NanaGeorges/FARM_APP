@@ -51,7 +51,7 @@ const SignUp = ({navigation}) => {
       setLoader(true);
       try {
         //const endpoint = 'http://172.20.10.2:3000/api/register/'; //add your api here
-        const endpoint = 'http://172.20.10.2:3000/api/register/'; //add your api here
+        const endpoint = 'http://192.168.1.2:3000/api/register/'; //add your api here
         const data =values;
     
         const response = await axios.post(endpoint, data);
@@ -139,6 +139,7 @@ const SignUp = ({navigation}) => {
                 {touched.email && errors.email &&(
                   <Text style={styles.errorMessage}>{errors.email}</Text>
                 )}
+
               </View>
 
               <View style={styles.wrapper}>

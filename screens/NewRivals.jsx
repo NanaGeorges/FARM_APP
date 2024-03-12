@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import styles  from './newRivals.style'
 import { COLORS } from '../constants';
 import ProductList  from '../components/products/ProductList';
+
 const NewRivals = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>

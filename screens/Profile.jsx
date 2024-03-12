@@ -17,29 +17,33 @@ const Profile = ({navigation}) => {
   },[]);
 
   const checkExistingUser = async()=>{
-      const id= await AsyncStorage.getItem('id')
-     console.log("checking id: ", id)
-      //const userId = `user${JSON.parse(id)}`;
-      //console.log("checking user: ", userId);
-
-      const parsedId = JSON.parse(id);
-    const userId = `user${parsedId._id}`;
-    console.log("checking user: ", userId);
-      
       try{
-        const currentUser = await AsyncStorage.getItem(userId);
-        console.log(currentUser)
-        if (currentUser !== null){
-          const parsedData = JSON.parse(currentUser)
-          setUserData(parsedData)
-          setUserLogin(true)
-          console.log(`Profile page has access to ${parsedData}`)
-        }else{
-          navigation.navigate("Login")
+            const id= await AsyncStorage.getItem('id')
+            //console.log("checking id: ", id)
+            //const userId = `user${JSON.parse(id)}`;
+            //console.log("checking user: ", userId);
+  
+          if(id !== null){
+                const parsedId = JSON.parse(id);
+                const userId = `user${parsedId._id}`;
+                //console.log("checking user: ", userId);
+
+
+              const currentUser = await AsyncStorage.getItem(userId);
+              console.log(currentUser)
+              if (currentUser !== null){
+                const parsedData = JSON.parse(currentUser)
+                setUserData(parsedData)
+                setUserLogin(true)
+                //console.log(`Profile page has access to ${parsedData}`)
+                console.log('Profile page has access to', userData)
+              }else{
+                navigation.navigate("Login")
+              }
+          }
+        }catch(error){
+          console.log("Error retrieving the data", error)
         }
-      }catch(error){
-        console.log("Error retrieving the data", error)
-      }
   }
 
 const userLogout = async()=>{
