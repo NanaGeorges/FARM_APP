@@ -67,7 +67,7 @@ const Home = () => {
         <Categories/>
         <Headings/>
         <ProductRow/>
-        <Text style={{paddingVertical: 50}}>    </Text>
+        <Text style={{paddingVertical: 50 }}>    </Text>
       </ScrollView>
       
     </SafeAreaView>
