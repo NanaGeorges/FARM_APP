@@ -202,6 +202,41 @@ const Sell=({navigation})=> {
            value.supplierId = userData._id;
            value.supplier = userData.username;
 
+           // store in MongoDb before adding to firebase
+
+           try {
+
+            await wait(4000); // Wait for 3 seconds (3000 milliseconds)
+            //const endpoint = 'http://172.20.10.2:3000/api/register/'; //add your api here
+            const endpoint = 'http://192.168.1.2:3000/api/products/'; //add your api here
+            const data=value;
+            console.log('data for mongoDb', data)
+        
+            const response = await axios.post(endpoint, data, { timeout: 10000 });
+        
+            if(response.status === 200){
+              navigation.navigate('Profile')
+              console.log('add to mongoDb succes')
+              setLoader(false);
+            }
+          } catch (error) {
+            console.log('!!!!! Axios error here ::::',error);
+            setLoader(false);
+            Alert.alert(
+              "Not Uploaded - Server down",
+              "Please provide try again",
+              [
+                {
+                  text: "Cancel", onPress: ()=> {}
+                },
+                {
+                  text: "Continue", onPress: ()=> {}
+                },
+                {defaultIndex: 1}
+              ]
+            )
+          }
+
           const docRef = await addDoc(collection(db,"UserProductPosts"), value );
           if(docRef.id){
             console.log("Document written with ID: ", docRef.id);
@@ -214,37 +249,6 @@ const Sell=({navigation})=> {
 
     console.log('Submitted Value',value);
 
-    try {
-
-      await wait(4000); // Wait for 3 seconds (3000 milliseconds)
-      //const endpoint = 'http://172.20.10.2:3000/api/register/'; //add your api here
-      const endpoint = 'http://192.168.1.2:3000/api/products/'; //add your api here
-      const data=value;
-      console.log('data for mongoDb', data)
-  
-      const response = await axios.post(endpoint, data, { timeout: 10000 });
-  
-      if(response.status === 200){
-        navigation.navigate('Profile')
-        console.log('add to mongoDb succes')
-        setLoader(false);
-      }
-    } catch (error) {
-      console.log('!!!!! Axios error here ::::',error);
-      Alert.alert(
-        "Not Uploaded",
-        "Please provide try again",
-        [
-          {
-            text: "Cancel", onPress: ()=> {}
-          },
-          {
-            text: "Continue", onPress: ()=> {}
-          },
-          {defaultIndex: 1}
-        ]
-      )
-    }
   }
 
     return (

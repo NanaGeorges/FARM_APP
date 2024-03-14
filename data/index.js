@@ -127,14 +127,14 @@ export const stories= [
     }
 ];
 
-export const messsagesData = [
+export const messagesData = [
     {
         id: "1",
         fullName: "Jhon Smith",
         isOnline: false,
         userImg: images.user1,
         lastSeen: "2023-11-16T04:52:06.501Z",
-        lastMessage: 'I love you. see you soon baby',
+        lastMessage: 'Is it Available?',
         messageInQueue: 2,
         lastMessageTime: "12:25 PM",
     },
@@ -144,7 +144,7 @@ export const messsagesData = [
         isOnline: true,
         userImg: images.user2,
         lastSeen: "2023-11-18T04:52:06.501Z",
-        lastMessage: 'I Know. you are so busy man.',
+        lastMessage: 'Please share more details.',
         messageInQueue: 0,
         lastMessageTime: "12:15 PM",
     },
@@ -154,7 +154,7 @@ export const messsagesData = [
         isOnline: true,
         userImg: images.user3,
         lastSeen: "2023-11-20T04:52:06.501Z",
-        lastMessage: 'Ok, see u soon',
+        lastMessage: 'Ok, I will take it',
         messageInQueue: 0,
         lastMessageTime: "09:12 PM",
     },
@@ -184,7 +184,7 @@ export const messsagesData = [
         isOnline: false,
         userImg: images.user6,
         lastSeen: "2023-11-20T04:52:06.501Z",
-        lastMessage: 'Do you want to go out dinner',
+        lastMessage: 'I need 3 muttons alive',
         messageInQueue: 3,
         lastMessageTime: "10:05 PM",
     },
@@ -193,7 +193,7 @@ export const messsagesData = [
         fullName: "Tom Jerry",
         userImg: images.user7,
         lastSeen: "2023-11-20T04:52:06.501Z",
-        lastMessage: 'Do you want to go out dinner',
+        lastMessage: 'How much for 1kg',
         messageInQueue: 2,
         lastMessageTime: "11:05 PM",
         isOnline: true
@@ -204,7 +204,7 @@ export const messsagesData = [
         isOnline: false,
         userImg: images.user8,
         lastSeen: "2023-11-20T04:52:06.501Z",
-        lastMessage: 'Can you share the design with me?',
+        lastMessage: 'Can you share the tools properties with me?',
         messageInQueue: 2,
         lastMessageTime: "09:11 PM",
     },
@@ -213,7 +213,7 @@ export const messsagesData = [
         fullName: "Nate Jack",
         userImg: images.user9,
         lastSeen: "2023-11-20T04:52:06.501Z",
-        lastMessage: 'Tell me what you want?',
+        lastMessage: 'Tell me your last price?',
         messageInQueue: 0,
         lastMessageTime: "06:43 PM",
         isOnline: true
