@@ -1,10 +1,11 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import { Image, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import React, { useState, useRef, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS, SIZES } from '../constants'
 import { icons, images } from '../constants'
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { Bubble, GiftedChat } from 'react-native-gifted-chat'
+import styles from './chat.style'
 //import {GiftedChat} from  'react-native-gifted-chat'
 
 
@@ -350,33 +351,3 @@ const Chat = ({ navigation, route }) => {
 
 export default Chat
 
-const styles = StyleSheet.create({
-  inputContainer: {
-    backgroundColor: COLORS.secondary,
-    height: 72,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputMessageContainer: {
-    height: 54,
-    width: SIZES.width - 48,
-    flexDirection: "row",
-    justifyContent: 'center',
-    backgroundColor: COLORS.lightWhite,
-    borderRadius: SIZES.medium,
-    alignItems: 'center',
-    borderColor: 'rgba(128,128,128,.4)',
-    borderWidth: 1,
-  },
-  input: {
-    color: 'black',
-    flex: 1,
-    paddingHorizontal: 10,
-  },
-  sendButton: {
-    backgroundColor: COLORS.lightWhite,
-    padding: 4,
-    borderRadius: 999,
-    marginHorizontal: 6,
-  }
-})

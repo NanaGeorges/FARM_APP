@@ -100,6 +100,7 @@ const ProductDetails = ({navigation}) => {
                 
             </View> 
             
+            {/* Chat Button */}
             <View style={styles.cartRow}>
                 <TouchableOpacity onPress={()=>{}} style={styles.cartBtn}>
                     <MaterialCommunityIcons name="message" size={20} color={'white'}/> 
