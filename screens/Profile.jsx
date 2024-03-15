@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import styles from './profile.style';
 import { StatusBar } from 'expo-status-bar';
 import {COLORS, SIZES} from  "../constants";
-import { AntDesign, MaterialCommunityIcons, SimpleLineIcons} from  '@expo/vector-icons'; 
+import { AntDesign, MaterialCommunityIcons, SimpleLineIcons, MaterialIcons} from  '@expo/vector-icons'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -144,6 +144,17 @@ const userLogout = async()=>{
             <View></View>
           ):(
             <View style={styles.menuWrapper}>
+
+                <TouchableOpacity onPress={() => navigation.navigate('MyPosts',{ selectedItem: userData._id })}>
+                  <View style={styles.menuItem(0.2)}>
+                  <MaterialIcons 
+                    name="post-add" 
+                    size={24} 
+                    color="black" 
+                  />
+                    <Text style={styles.menuText}>My Posts</Text>
+                  </View>
+                </TouchableOpacity>
 
               <TouchableOpacity onPress={()=> navigation.navigate('Favorites')}>
                   <View style={styles.menuItem(0.2)}>

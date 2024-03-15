@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
         width: SIZES.width,  
     }, 
     cartBtn:{
+        flexDirection: 'row',
+        justifyContent:'center',
+        alignItems: "Center",
         width: SIZES.width*0.7,
         backgroundColor: COLORS.black,
         padding: SIZES.small/2,

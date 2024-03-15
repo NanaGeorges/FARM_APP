@@ -88,6 +88,7 @@ const ProductDetails = ({navigation}) => {
                 </View>
             </View>
 
+            {/* Buy Now Button */}
             <View style={styles.cartRow}>
                 <TouchableOpacity onPress={()=>{}} style={styles.cartBtn}>
                     <Text style={styles.cartTitle}>BUY NOW</Text>
@@ -95,6 +96,14 @@ const ProductDetails = ({navigation}) => {
 
                 <TouchableOpacity onPress={()=>{}} style={styles.addCart}>
                      <Fontisto name="shopping-bag" size={22} color={COLORS.lightWhite}/>
+                </TouchableOpacity>
+                
+            </View> 
+            
+            <View style={styles.cartRow}>
+                <TouchableOpacity onPress={()=>{}} style={styles.cartBtn}>
+                    <MaterialCommunityIcons name="message" size={20} color={'white'}/> 
+                    <Text style={styles.cartTitle}>Chat with Seller</Text>
                 </TouchableOpacity>
                 
             </View>

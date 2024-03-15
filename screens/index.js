@@ -12,6 +12,7 @@ import Sell from './Sell';
 import Chat from './Chat';
 import ProductsListsByCategory from './ProductsListsByCategory'
 import Chats from './Chats';
+import MyPosts from './MyPosts';
 
 export{
     Home,
@@ -27,5 +28,6 @@ export{
     Sell,
     Chats,
     Chat,
-    ProductsListsByCategory
+    ProductsListsByCategory,
+    MyPosts
 }

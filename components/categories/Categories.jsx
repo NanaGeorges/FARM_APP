@@ -34,7 +34,9 @@ import { app } from '../../firebaseConfig';
 
   ); */
 
-const Categories = () => {
+const Categories = ({ supplierId, userLogin }) => {
+ // console.log("supplierID in  Category: ", supplierId);
+ // console.log("userLogin in Category: ",userLogin)
   
    /*  const renderItem = ({ item }) => (
         <Item title={item.title} image={item.image} />
@@ -68,7 +70,8 @@ const Categories = () => {
                     data={categoryList}
                     //renderItem={renderItem}
                     renderItem={({item,index})=>(
-                      <TouchableOpacity onPress={()=> navigation.navigate('ProductsListsByCategory',{ selectedItem: item })}>
+                      <TouchableOpacity onPress={()=> navigation.navigate('ProductsListsByCategory',{ selectedItem: item, supplierId: supplierId,
+                        userLogin: userLogin})}>
                           <View style={styles.container}>
                               <View style={styles.imageContainer}>
                                   <Image source={{uri:item.icon}}

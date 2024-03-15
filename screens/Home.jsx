@@ -6,16 +6,24 @@ import styles from './home.style';
 import { Welcome, Headings, ProductRow, Categories } from '../components';
 import Carousel from '../components/home/Carousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
+import useFetch from '../hook/useFetch';
+
 
 
 //import Headings from '../components/home/Headings';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Home = () => {
+const Home = ({route}) => {
   const [userData, setUserData] = useState(null)
   const [userLogin, setUserLogin] = useState(false)
 
   const [refreshing, setRefreshing] = useState(false);
+
+  const isFocused = useIsFocused()
+
+  //const {refetch} = useFetch()
 
   const onRefresh = () => {
     // Fetch new data from the server
@@ -28,7 +36,40 @@ const Home = () => {
   
   useEffect(()=>{
     checkExistingUser();
+   // console.log(userData._id);
   },[]);
+
+
+
+  useEffect(()=>{
+    if(isFocused){
+      checkExistingUser();
+     // refetch()
+    }
+   // console.log(userData._id);
+  },[isFocused]);
+
+  // In the Home component, where you handle the parameter passed back
+useEffect(() => {
+  if (route.params?.supplierId) {
+      const { supplierId } = route.params;
+      console.log("Received supplierId in Home:", supplierId);
+      // Update state or perform any relevant logic with the received supplierId
+  }
+}, [route.params?.supplierId]);
+
+ 
+
+
+ /*  useFocusEffect(() => {
+    // Run this effect when the screen gains focus
+    checkExistingUser();
+    return () => {
+      // Clean up when the screen loses focus
+    };
+  }); */
+
+
 
   /* const checkExistingUser = async()=>{
       const id= await AsyncStorage.getItem('id')
@@ -112,10 +153,10 @@ const Home = () => {
       >
          <Welcome/>
         <Carousel/> 
-        <Categories/>
-        <Headings/> 
-        <ProductRow/> 
-         <Text style={{paddingVertical: 50 }}>    </Text>
+        <Categories supplierId={userData ? userData._id : null} userLogin={userLogin} />
+        <Headings supplierId={userData ? userData._id : null} userLogin={userLogin} />
+        <ProductRow supplierId={userData ? userData._id : null} userLogin={userLogin} /> 
+        <Text style={{paddingVertical: 50 }}>    </Text>
       </ScrollView>
       
     </SafeAreaView>

@@ -19,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 
 
+
 const validationSchema= Yup.object().shape({
   title: Yup.string()
     .min(3, 'Title must be at least 3 character')
@@ -123,6 +124,8 @@ const Sell=({navigation})=> {
                 setUserLogin(true);
                // await wait(60000); // Wait for 3 seconds (3000 milliseconds)
                 console.log('sell comp :', userData)
+              }else{
+                //setDone(true);
               }
             }else{
               //notLoggedIn()

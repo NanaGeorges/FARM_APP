@@ -4,11 +4,29 @@ import { COLORS, SIZES } from '../../constants'
 import ProductCardView from './ProductCardView';
 import styles from  "./productRow.style";
 import useFetch from '../../hook/useFetch';
+import { useFocusEffect } from '@react-navigation/native';
+import { useEffect } from 'react';
 
 
-const ProductRow = () => {
-  const {data, isLoading, error} = useFetch()
-    const products = [1,2,3,4];
+
+const ProductRow = ({ supplierId, userLogin }) => {
+  console.log("supplierID in  Products Row: ", supplierId);
+  console.log("userLogin in Products Row: ",userLogin)
+  
+  const {data, isLoading, error, refetch} = useFetch({ supplierId, userLogin })
+
+  useEffect(() => {
+    // Call refetch function from useFetch whenever supplierId changes
+    refetch();
+  }, [supplierId]); // Dependency array
+  
+  useFocusEffect(
+    React.useCallback(() => {
+      refetch();
+    }, [])
+  );
+  //const products = [1,2,3,4];
+  
   return (
     <View style={styles.container}> 
         {isLoading ? (
@@ -22,6 +40,7 @@ const ProductRow = () => {
         renderItem={({ item }) => <ProductCardView item={item} /> }
         horizontal
         contentContainerStyle= {{ columnGap: SIZES.medium}}
+        showsHorizontalScrollIndicator= {false}
       />
     )}
     </View>

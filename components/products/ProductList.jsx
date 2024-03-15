@@ -4,9 +4,13 @@ import useFetch from '../../hook/useFetch';
 import {COLORS, SIZES} from  "../../constants";
 import styles from './productList.style'; 
 import ProductCardView  from "./ProductCardView"
+import { useFocusEffect } from '@react-navigation/native';
 
-const ProductList = () => {
-    const {data, isLoading, error } = useFetch();
+const ProductList = ({navigation, supplierId, userLogin}) => {
+    //console.log("supplierID in Product List: ", supplierId);
+    //console.log("userLogin in Products List: ",userLogin)
+
+    const {data, isLoading, error, refetch } = useFetch({ supplierId, userLogin });
     if(isLoading){
         return(
             <View style={styles.loadingContainer}>
@@ -16,6 +20,12 @@ const ProductList = () => {
         );
     
     }
+
+    /* useFocusEffect(
+        React.useCallback(() => {
+          refetch();
+        }, [])
+      ); */
 
     return (
         <View style={styles.container}>

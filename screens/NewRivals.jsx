@@ -6,19 +6,26 @@ import styles  from './newRivals.style'
 import { COLORS } from '../constants';
 import ProductList  from '../components/products/ProductList';
 
-const NewRivals = ({navigation}) => {
+const NewRivals = ({navigation, route}) => {
+  const { supplierId, userLogin } = route.params;
+  //console.log("supplierID in Newrivals: ", supplierId);
+  //console.log("userLogin in NewRivals: ",userLogin)
+
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.wrapper}>
             <View style={styles.upperRow}>
-                <TouchableOpacity onPress={()=>navigation.goBack()}>
-                    <Ionicons name='chevron-back-circle' 
+          <TouchableOpacity onPress={() => {
+            console.log("Navigating back with supplierId:", supplierId);
+            navigation.goBack({ supplierId: supplierId });
+          }}>
+                <Ionicons name='chevron-back-circle' 
                     size={30} color={COLORS.lightWhite}/>
                 </TouchableOpacity>
 
                 <Text style={styles.heading}> Products </Text>
             </View>
-            <ProductList/>
+            <ProductList navigation={navigation} supplierId={supplierId} userLogin={userLogin} />
         </View>
     </SafeAreaView>
   )

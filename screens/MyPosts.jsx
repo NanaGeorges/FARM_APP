@@ -6,20 +6,18 @@ import styles  from './newRivals.style'
 import { COLORS, SIZES } from '../constants';
 import ProductCardView from '../components/products/ProductCardView';
 import useFetchCategory from '../hook/useFetchCategory'
-import ProductList  from '../components/products/ProductList';
+import useFetchMyPosts from '../hook/useFetchMyPosts';
 
 
-const ProductsListsByCategory = ({navigation, route}) => {
+const MyPosts = ({navigation, route}) => {
 
   // Extracting the selectedItem parameter from the route prop
-  const { selectedItem, supplierId, userLogin } = route.params;
-  const category=selectedItem?.name;
-
- // const { } = route.params;
-  //console.log("supplierID in ProductsListsByCategory : ", supplierId);
-  //console.log("userLogin in ProductsListsByCategory: ",userLogin)
-
-  const {data, isLoading, error } = useFetchCategory({category, supplierId , userLogin});
+  const { selectedItem } = route.params;
+  const supplierId=selectedItem
+  console.log('iciiiiiii',supplierId)
+  //await wait(1000); // Wait for 3 seconds (3000 milliseconds)
+  
+  const {data, isLoading, error } = useFetchMyPosts({supplierId});
     if(isLoading){
         return(
             <View style={styles.loadingContainer}>
@@ -39,7 +37,7 @@ const ProductsListsByCategory = ({navigation, route}) => {
                     size={30} color={COLORS.lightWhite}/>
                 </TouchableOpacity>
 
-                <Text style={styles.heading}> {selectedItem.name} </Text>
+                <Text style={styles.heading}> My Posts </Text>
             </View>
             {/* <ProductList/> */}
             <Text style={{height: 30}}> </Text>
@@ -59,4 +57,6 @@ const ProductsListsByCategory = ({navigation, route}) => {
   )
 }
 
-export default ProductsListsByCategory
+export default MyPosts
+
+//const styles = StyleSheet.create({})
