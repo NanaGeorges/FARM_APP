@@ -12,16 +12,16 @@ import useFetch from '../hook/useFetch';
 
 
 
+
 //import Headings from '../components/home/Headings';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = ({route}) => {
   const [userData, setUserData] = useState(null)
   const [userLogin, setUserLogin] = useState(false)
-
   const [refreshing, setRefreshing] = useState(false);
-
   const isFocused = useIsFocused()
+ 
 
   //const {refetch} = useFetch()
 
@@ -53,7 +53,7 @@ const Home = ({route}) => {
 useEffect(() => {
   if (route.params?.supplierId) {
       const { supplierId } = route.params;
-      console.log("Received supplierId in Home:", supplierId);
+      //console.log("Received supplierId in Home:", supplierId);
       // Update state or perform any relevant logic with the received supplierId
   }
 }, [route.params?.supplierId]);
@@ -98,7 +98,7 @@ useEffect(() => {
       const id = await AsyncStorage.getItem('id');
   
       // Logging id to ensure it's not null
-      console.log('id:', id);
+      //console.log('id in Home Page:', id);
   
       if (id !== null) {
         const parsedId = JSON.parse(id);
@@ -130,14 +130,14 @@ useEffect(() => {
          
           <Text style={styles.location} >{ userData ? userData.location : 'Bangalore'} </Text>
 
-          <View style={{alignItems:"flex-end"}}>
+           <View style={{alignItems:"flex-end"}}>
             <View style={styles.cartCount}>
-              <Text style={styles.cartNumber}> 8 </Text>
+              <Text style={styles.cartNumber}> 2 </Text>
             </View>
             <TouchableOpacity>
               <Fontisto name='shopping-bag' size={24}/>
             </TouchableOpacity>
-          </View>
+          </View> 
 
         </View>
       </View>

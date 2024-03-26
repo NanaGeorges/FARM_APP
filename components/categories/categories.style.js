@@ -64,14 +64,25 @@ const styles = StyleSheet.create({
         fontSize: SIZES.small,
         
     },
-    header:{
+    /* header:{
         paddingTop: SIZES.large -6,
         paddingHorizontal: '34%'
     },
     headerTitle:{
         fontFamily: "semibold",
         fontSize: SIZES.xLarge -2
-    },
+    }, */
+    header: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: SIZES.large -6,
+      },
+      headerTitle: {
+        fontFamily: "semibold",
+        fontSize: SIZES.xLarge - 2,
+      },
+      
 
 
    /*  imageContainer: {

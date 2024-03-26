@@ -27,9 +27,9 @@ const ProductCardView = ({item}) => {
                 </Text>
                 <Text style={styles.price}>Rs {item.price}</Text>
             </View>
-            <TouchableOpacity style={styles.addBtn}>
+             <TouchableOpacity style={styles.addBtn}>
                     <Ionicons  name="add-circle" size={35} color={COLORS.primary} />
-            </TouchableOpacity>
+            </TouchableOpacity> 
         </View>
     </TouchableOpacity>
   )

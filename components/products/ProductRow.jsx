@@ -10,8 +10,8 @@ import { useEffect } from 'react';
 
 
 const ProductRow = ({ supplierId, userLogin }) => {
-  console.log("supplierID in  Products Row: ", supplierId);
-  console.log("userLogin in Products Row: ",userLogin)
+  //console.log("supplierID in  Products Row: ", supplierId);
+  //console.log("userLogin in Products Row: ",userLogin)
   
   const {data, isLoading, error, refetch} = useFetch({ supplierId, userLogin })
 

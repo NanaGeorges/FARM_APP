@@ -25,13 +25,13 @@ const useFetch = ({ supplierId, userLogin }) => {
     try {
       let response;
       if (supplierId) {
-        console.log("I'm in if statement === supplierID in  useFetch: ", supplierId);
+        //console.log("I'm in if statement === supplierID in  useFetch: ", supplierId);
         //const supplierId= '65f00a54b75c0d5c0476802e'
         //const supplierId= userData._id
-        response = await axios.get(`http://192.168.1.2:3000/api/products/supplierId/${supplierId}`);
+        response = await axios.get(`http://192.168.1.4:3000/api/products/supplierId/${supplierId}`);
       } else if (supplierId==null){
-        console.log("i'm in else statement ----- supplierID in  useFetch: ", supplierId);
-        response = await axios.get('http://192.168.1.2:3000/api/products/');
+        //console.log("i'm in else statement ----- supplierID in  useFetch: ", supplierId);
+        response = await axios.get('http://192.168.1.4:3000/api/products/');
       }
 
       //const response = await axios.get('http://192.168.1.2:3000/api/products/')
@@ -99,6 +99,7 @@ const useFetch = ({ supplierId, userLogin }) => {
     // checkExistingUser();
     fetchData();
   };
+  
   return { data, isLoading, error, refetch };
 };
 

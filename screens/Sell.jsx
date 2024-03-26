@@ -211,7 +211,7 @@ const Sell=({navigation})=> {
 
             await wait(4000); // Wait for 3 seconds (3000 milliseconds)
             //const endpoint = 'http://172.20.10.2:3000/api/register/'; //add your api here
-            const endpoint = 'http://192.168.1.2:3000/api/products/'; //add your api here
+            const endpoint = 'http://192.168.1.5:3000/api/products/'; //add your api here
             const data=value;
             console.log('data for mongoDb', data)
         

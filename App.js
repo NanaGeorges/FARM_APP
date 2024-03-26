@@ -43,7 +43,7 @@ if(!fontsLoaded){
           component={BottomTabNavigation}
           options={{headerShown: false}}
         />
-
+        
         <Stack.Screen
           name='Cart'
           component={Cart}

@@ -30,13 +30,13 @@ const Profile = ({navigation}) => {
 
 
               const currentUser = await AsyncStorage.getItem(userId);
-              console.log(currentUser)
+             // console.log('current user in Profile', currentUser)
               if (currentUser !== null){
                 const parsedData = JSON.parse(currentUser)
                 setUserData(parsedData)
                 setUserLogin(true)
                 //console.log(`Profile page has access to ${parsedData}`)
-                console.log('Profile page has access to', userData)
+                //console.log('Profile page has access to', userData)
               }else{
                 navigation.navigate("Login")
               }
@@ -53,6 +53,9 @@ const userLogout = async()=>{
     //console.log("checking user: ", userId);
     try {
       await  AsyncStorage.multiRemove([userId, 'id'])
+      await AsyncStorage.removeItem('users');
+      await AsyncStorage.removeItem('myData');
+      console.log('Data removed from AsyncStorage successfully profile page userLogoout ');
       navigation.replace('Bottom Navigation')
     } catch (error) {
       console.log("Error Loggin out the user:", error)
@@ -156,7 +159,7 @@ const userLogout = async()=>{
                   </View>
                 </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=> navigation.navigate('Favorites')}>
+            {/*   <TouchableOpacity onPress={()=> navigation.navigate('Favorites')}>
                   <View style={styles.menuItem(0.2)}>
                     <MaterialCommunityIcons
                       name="heart-outline"
@@ -198,7 +201,7 @@ const userLogout = async()=>{
                     />
                     <Text style={styles.menuText}>Clear cache</Text>
                   </View>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
               <TouchableOpacity onPress={()=>deleteAccount()}>
                   <View style={styles.menuItem(0.2)}>

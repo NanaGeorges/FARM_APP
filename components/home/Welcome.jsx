@@ -20,7 +20,7 @@ const Welcome = () => {
         <Text style= { styles.welcomeTxt(COLORS.primary, 0)}>
                 {" "}
                 Connected to the world of farming!
-            </Text>
+        </Text>
         </View>
         <View style= {styles.searchContainer}>
             <TouchableOpacity>
@@ -34,11 +34,11 @@ const Welcome = () => {
                     placeholder='What are you looking for'
                 />
             </View>
-            <View>
+             <View>
                 <TouchableOpacity style={styles.searchBtn}>
                     <Ionicons name="camera-outline" size={SIZES.xLarge} color={COLORS.offwhite}/>
                 </TouchableOpacity>
-            </View>
+            </View> 
         </View>
     </View>
   )

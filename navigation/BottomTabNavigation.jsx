@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react';
+import React, {useState, useEffect} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Home from '../screens/Home';
 // import Search from  '../screens/Search';
@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home, Search, Profile, Sell, Chats} from '../screens';
 import {  Ionicons } from '@expo/vector-icons';
 import { COLORS } from "../constants/index"
+import { useIsFocused } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +27,53 @@ const screenOptions = {
 }
 
 const BottomTabNavigation = () => {
+
+    const [userData, setUserData] = useState(null)
+    const [userLogin, setUserLogin] = useState(false)
+    //console.log('userData in bottom nav with s: ', userData);
+    //console.log('userLogin in bottom nav with s: ', userLogin);
+    const isFocused = useIsFocused()
+  
+    const checkExistingUser = async () => {
+      try {
+        const id = await AsyncStorage.getItem('id');
+    
+        // Logging id to ensure it's not null
+        //console.log('id in bottom nav', id);
+    
+        if (id !== null) {
+          const parsedId = JSON.parse(id);
+          // Logging parsedId to ensure it's not null
+          //console.log('parsedId:', parsedId);
+    
+          const userId = `user${parsedId._id}`;
+          const currentUser = await AsyncStorage.getItem(userId);
+    
+          if (currentUser !== null) {
+            const parsedData = JSON.parse(currentUser);
+            setUserData(parsedData);
+            setUserLogin(true);
+          }
+        }
+      } catch (error) {
+        console.log("Error retrieving the data", error);
+      }
+    };
+    
+    useEffect(()=>{
+      checkExistingUser();
+     // console.log(userData._id);
+    },[!userData]);
+  
+    useEffect(()=>{
+      if(isFocused){
+        checkExistingUser();
+       // refetch()
+      }
+     // console.log(userData._id);
+    },[isFocused && !userData]);
+
+
   return (
     <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen 
@@ -41,7 +90,7 @@ const BottomTabNavigation = () => {
         }}
         />
 
-        <Tab.Screen 
+        {/* <Tab.Screen 
         name="Chats" 
         component={Chats}
         options={{
@@ -53,7 +102,23 @@ const BottomTabNavigation = () => {
                 />
             }
         }}
-        />
+        /> */}
+
+          {userData && (
+              <Tab.Screen
+                  name="Chats"
+                  component={Chats}
+                  options={{
+                      tabBarIcon: ({ focused }) => (
+                          <Ionicons
+                              name={'chatbubbles'}
+                              size={24}
+                              color={focused ? COLORS.primary : COLORS.gray2}
+                          />
+                      )
+                  }}
+              />
+          )}
         
         
         <Tab.Screen 

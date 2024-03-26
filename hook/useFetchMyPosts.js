@@ -13,7 +13,7 @@ const useFetchMyPosts = ({supplierId}) => {
            
         try {     
             console.log('sup',supplierId)
-            const response = await axios.get(`http://192.168.1.2:3000/api/products/userPosts/${supplierId}`)
+            const response = await axios.get(`http://192.168.1.4:3000/api/products/userPosts/${supplierId}`)
             //const response = await axios.get('http://172.20.10.2:3000/api/products/category/')  
             //console.log(response.data);
             setData(response.data)

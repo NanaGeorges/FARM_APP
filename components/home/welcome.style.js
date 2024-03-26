@@ -3,14 +3,17 @@ import {COLORS, SIZES} from "../../constants/index";
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%"
+        width: "100%",
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     welcomeTitle: (color, top) => ({
         fontFamily: "bold", 
         fontSize: SIZES.xxLarge -6,
         marginTop: top,
         color: color,
-        marginHorizontal: '30%'
+        //marginHorizontal: '30%'
         
     }),
     welcomeTxt: (color, top) => ({
@@ -18,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: SIZES.xLarge -6,
         marginTop: top,
         color: color,
-        marginHorizontal: '10%'
+        //marginHorizontal: '10%'
         
     }),
     searchContainer: {

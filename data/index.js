@@ -129,12 +129,12 @@ export const stories= [
 
 export const messagesData = [
     {
-        id: "1",
-        fullName: "Jhon Smith",
+        id: "1", //used in users collection
+        fullName: "Jhon Smith", //---used in users collection
         isOnline: false,
-        userImg: images.user1,
+        userImg: images.user1, //-- used in users collection
         lastSeen: "2023-11-16T04:52:06.501Z",
-        lastMessage: 'Is it Available?',
+        lastMessage: 'Is it Available?', // should be in newChatroomRef
         messageInQueue: 2,
         lastMessageTime: "12:25 PM",
     },
