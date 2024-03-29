@@ -12,16 +12,16 @@ const styles = StyleSheet.create({
         fontFamily: "bold",
         color: COLORS.primary,
         fontSize: SIZES.large,
-        alignItems: 'center',
-        marginHorizontal: '35%',
+        textAlign: 'center', // Align text center horizontally
+       // marginHorizontal: '35%',
         marginBottom: SIZES.small
     },
     title:{
         fontFamily: "bold",
         color: COLORS.primary,
         fontSize: SIZES.large,
-        alignItems: 'center',
-        marginHorizontal: 20,
+        textAlign: 'center', // Align text center horizontally
+       // marginHorizontal: 20,
         marginBottom: SIZES.xxLarge
     },
     wrapper:{

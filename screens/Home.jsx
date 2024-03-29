@@ -21,6 +21,7 @@ const Home = ({route}) => {
   const [userLogin, setUserLogin] = useState(false)
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused()
+  let offline= false
  
 
   //const {refetch} = useFetch()
@@ -112,6 +113,9 @@ useEffect(() => {
           const parsedData = JSON.parse(currentUser);
           setUserData(parsedData);
           setUserLogin(true);
+        }else{
+          offline=true
+          console.log("offline home", offline);
         }
       }
     } catch (error) {
@@ -153,9 +157,9 @@ useEffect(() => {
       >
          <Welcome/>
         <Carousel/> 
-        <Categories supplierId={userData ? userData._id : null} userLogin={userLogin} />
-        <Headings supplierId={userData ? userData._id : null} userLogin={userLogin} />
-        <ProductRow supplierId={userData ? userData._id : null} userLogin={userLogin} /> 
+        <Categories supplierId={userData ? userData._id : null} userLogin={userLogin} offline={offline} />
+        <Headings supplierId={userData ? userData._id : null} userLogin={userLogin} offline={offline} />
+        <ProductRow supplierId={userData ? userData._id : null} userLogin={userLogin} offline={offline} /> 
         <Text style={{paddingVertical: 50 }}>    </Text>
       </ScrollView>
       

@@ -3,19 +3,19 @@ import React from 'react'
 import { COLORS, SIZES } from '../../constants'
 import ProductCardView from './ProductCardView';
 import styles from  "./productRow.style";
-import useFetch from '../../hook/useFetch';
+import useFetchRow from '../../hook/useFetch';
 import { useFocusEffect } from '@react-navigation/native';
 import { useEffect } from 'react';
 
 
 
-const ProductRow = ({ supplierId, userLogin }) => {
+const ProductRow = ({ supplierId, userLogin, offline}) => {
   //console.log("supplierID in  Products Row: ", supplierId);
   //console.log("userLogin in Products Row: ",userLogin)
   
-  const {data, isLoading, error, refetch} = useFetch({ supplierId, userLogin })
+  const {data, isLoading, error, refetch} = useFetchRow({ supplierId, userLogin, offline})
 
-  useEffect(() => {
+  /* useEffect(() => {
     // Call refetch function from useFetch whenever supplierId changes
     refetch();
   }, [supplierId]); // Dependency array
@@ -24,7 +24,7 @@ const ProductRow = ({ supplierId, userLogin }) => {
     React.useCallback(() => {
       refetch();
     }, [])
-  );
+  ); */
   //const products = [1,2,3,4];
   
   return (

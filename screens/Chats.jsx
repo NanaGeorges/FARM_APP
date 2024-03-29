@@ -592,11 +592,11 @@ const Chats = ({ navigation }) => {
           </TouchableOpacity>
           <TextInput
             style={styles.searchInput}
-            placeholder='Search contacts...'
+            placeholder='Search customer...'
             value={search}
             onChangeText={handleSearch}
           />
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image
               source={icons.editPencil}
               resizeMode='contain'
@@ -606,7 +606,7 @@ const Chats = ({ navigation }) => {
                 tintColor: COLORS.gray
               }}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <View>
