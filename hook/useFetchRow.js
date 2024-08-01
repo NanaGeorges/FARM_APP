@@ -19,12 +19,12 @@ const useFetchRow = ({ userLogin, offline }) => {
         const parsedData = JSON.parse(currentUser);
         const supplierId= parsedData._id;
         if (supplierId!==null) {
-         // response = await axios.get(`http://192.168.1.5:3000/api/products/supplierId/${supplierId}`);
-          response = await axios.get(`http://172.20.10.2:3000/api/products/supplierId/${supplierId}`);
+          response = await axios.get(`http://192.168.1.4:3000/api/products/supplierId/${supplierId}`);
+          //response = await axios.get(`http://172.20.10.2:3000/api/products/supplierId/${supplierId}`);
         } else if (supplierId===null){
           console.log("i'm in else statement ----- supplierID in  useFetch: ", supplierId);
-         // response = await axios.get('http://192.168.1.5:3000/api/products/');
-          response = await axios.get('http://172.20.10.2:3000/api/products/') 
+          response = await axios.get('http://192.168.1.4:3000/api/products/');
+         //response = await axios.get('http://172.20.10.2:3000/api/products/') 
         }
   
         setData(response.data)

@@ -18,6 +18,7 @@ const Search = () => {
         try {
             //const response = await axios.get(`http://192.168.1.5:3000/api/products/search/${searchKey}`);
             const response = await axios.get(`http://172.20.10.2:3000/api/products/search/${searchKey}`);
+           // const response = await axios.get(`http://192.168.63.104:3000/api/products/search/${searchKey}`);
             
             setSearchResuts(response.data)
         } catch (error) {
